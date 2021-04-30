@@ -17,8 +17,8 @@ I used the command `sudo nmap [IP_ADDRESS]` to scan for opened ports
 
 Got this report:
 
-`Nmap scan report for 10.10.5.142
-Host is up (0.066s latency).`
+`Nmap scan report for 10.10.5.142`
+`Host is up (0.066s latency).`
 `Not shown: 994 closed ports`
 `PORT     STATE SERVICE`
 `21/tcp   open  ftp`
