@@ -16,18 +16,18 @@ Didn't required any answer.
 I used the command `sudo nmap [IP_ADDRESS]` to scan for opened ports
 
 Got this report:
-
-`Nmap scan report for 10.10.5.142`
-`Host is up (0.066s latency).`
-`Not shown: 994 closed ports`
-`PORT     STATE SERVICE`
-`21/tcp   open  ftp`
-`22/tcp   open  ssh`
-`139/tcp  open  netbios-ssn`
-`445/tcp  open  microsoft-ds`
-`3128/tcp open  squid-http`
-`3333/tcp open  dec-notes`
-
+```
+Nmap scan report for 10.10.5.142
+Host is up (0.066s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3128/tcp open  squid-http
+3333/tcp open  dec-notes
+```
 
 So the number of opened ports is `6`.
 
