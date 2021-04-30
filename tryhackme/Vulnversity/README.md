@@ -37,20 +37,22 @@ I used the command `sudo nmap -sV [ID_ADDRESS]` to determine the version of the
 services running
 
 Got this report:
-`Nmap scan report for 10.10.5.142`
-`Host is up (0.086s latency).`
-`Not shown: 994 closed ports`
-`PORT     STATE SERVICE     VERSION`
-`21/tcp   open  ftp         vsftpd 3.0.3`
-`22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)`
-`139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)`
-`445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)`
-`3128/tcp open  http-proxy  Squid http proxy 3.5.12`
-`3333/tcp open  http        Apache httpd 2.4.18 ((Ubuntu))`
-`Service Info: Host: VULNUNIVERSITY; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel`
+```
+Nmap scan report for 10.10.5.142
+Host is up (0.086s latency).
+Not shown: 994 closed ports
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         vsftpd 3.0.3
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+3128/tcp open  http-proxy  Squid http proxy 3.5.12
+3333/tcp open  http        Apache httpd 2.4.18 ((Ubuntu))
+Service Info: Host: VULNUNIVERSITY; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
-`Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .`
-`Nmap done: 1 IP address (1 host up) scanned in 31.41 seconds`
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 31.41 seconds
+```
 
 And found out the version of the Squid Proxy:
 `3128/tcp open  http-proxy  Squid http proxy 3.5.12`
@@ -87,26 +89,28 @@ The answer is `3333`.
 
 I used `gobuster` to scan the website for URLs and found this urls:
 
-`gobuster -u http://10.10.5.142:3333 -w /usr/bin/wordlist`
+```
+gobuster -u http://10.10.5.142:3333 -w /usr/bin/wordlist
 
-`=====================================================`
-`Gobuster v2.0.1              OJ Reeves (@TheColonial)`
-`=====================================================`
-`[+] Mode         : dir`
-`[+] Url/Domain   : http://10.10.5.142:3333/`
-`[+] Threads      : 10`
-`[+] Wordlist     : /usr/bin/wordlist`
-`[+] Status codes : 200,204,301,302,307,403`
-`[+] Timeout      : 10s`
-`=====================================================`
-`2021/04/30 15:18:09 Starting gobuster`
-`=====================================================`
-`/css (Status: 301)`
-`/images (Status: 301)`
-`/internal (Status: 301)`
-`/js (Status: 301)`
-`=====================================================`
-`2021/04/30 15:18:21 Finished`
-`=====================================================`
+=====================================================
+Gobuster v2.0.1              OJ Reeves (@TheColonial)
+=====================================================
+[+] Mode         : dir
+[+] Url/Domain   : http://10.10.5.142:3333/
+[+] Threads      : 10
+[+] Wordlist     : /usr/bin/wordlist
+[+] Status codes : 200,204,301,302,307,403
+[+] Timeout      : 10s
+=====================================================
+2021/04/30 15:18:09 Starting gobuster
+=====================================================
+/css (Status: 301)
+/images (Status: 301)
+/internal (Status: 301)
+/js (Status: 301)
+=====================================================
+2021/04/30 15:18:21 Finished
+=====================================================
+```
 
-The answer has 8 letters and the only url that has 8 letters is `internal`, so the answer is `/internal/`.  
+The answer has 8 letters and the only url that has 8 letters is `internal`, so the answer is `/internal/`.
